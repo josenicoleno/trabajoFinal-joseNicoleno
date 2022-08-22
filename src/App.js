@@ -3,13 +3,12 @@ import { CartContextProvider } from './context/cartContext'
 import NavBar from './navbar/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './itemdetail/ItemDetailContainer';
-import { Cart } from './components/Cart';
+import ItemCartContainer from './cart/ItemCartContainer';
 import Footer from './footer/Footer';
 import PageNotFound from './pagenotfound/PageNotFound';
 import AboutUs from './aboutus/AboutUs'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { getCart } from './firebase/firebase'
-
 import './App.css';
 
 function App() {
@@ -26,7 +25,7 @@ function App() {
         )
       })
   }, [])
-
+  
   return (
     < CartContextProvider products={carrito}>
       <BrowserRouter>
@@ -37,7 +36,7 @@ function App() {
           <Route path='productos/:id' element={<ItemDetailContainer />} />
           {/*  <Route path='episodios' element={<Episodies />} />
           <Route path='episodio/:id' element={<EpisodeDetailContainer />} /> */}
-          <Route path='carrito' element={<Cart />} />
+          <Route path='carrito' element={<ItemCartContainer />} />
           <Route path='sobre-nostros' element={<AboutUs />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>

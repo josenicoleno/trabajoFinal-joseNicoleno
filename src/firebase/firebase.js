@@ -24,9 +24,15 @@ export const getProducts = () =>{
 }
 
 /* trae el producto */
-export const getProduct = (id) =>{
+export  const getProduct = async (id) =>{
     const docRef = doc(db, 'productos', id)
-    return getDoc(docRef)
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+        return docSnap.data()
+      } else {
+        // doc.data() will be undefined in this case
+        return {}
+      }
 }
 
 /*trae el carrito */

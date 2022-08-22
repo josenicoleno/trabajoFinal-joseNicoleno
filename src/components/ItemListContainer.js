@@ -37,14 +37,11 @@ const ItemListContainer = ({ greeting }) => {
                 )
             })
             .catch(() => setErr('Ocurrió un error'))
-            .catch(() => alert(err))
             .finally(() => setLoading(false))
     }, [])
     
     return (
         <div className="container py-12" style={{ textAlign: `center` }}>
-            {/* {greeting}
-            <ItemCount stock={5} initial={1} onAdd={onAddCallback} /> */}
             <SearchForm onSearch={searchWords} />
             {loading
                 ? (

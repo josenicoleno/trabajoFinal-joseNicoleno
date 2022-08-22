@@ -11,20 +11,22 @@ export const CartContextProvider = ({ products, children }) => {
 
     const addProduct = async (product, quantity) => {
         //agregar una cantidad de un articulo
-        const producto = {id: product.id, name:product.name, quantity:quantity}
+        const producto = {id:product.id, titulo:product.titulo, foto:product.foto, precio:product.precio, cantidad:quantity}
         const id = await insertProduct(producto)
         const _carrito = products.concat(producto)
         setCarrito(_carrito)
     }
 
-    const deleteProduct = (ProductId) => {
+    const deleteProduct = async (ProductId) => {
         //remover un articulo 
         const _carrito = products.filter((el, i) => i !== ProductId);
         try{
-            removeProduct(products[ProductId].id)
-            setCarrito(_carrito)
+            await removeProduct(ProductId)
+            //removeProduct(products[ProductId].id)
+             setCarrito(_carrito)
         }catch{}
     }
+    
     const clear = () => {
         //remover todos los articulos
         const products_ = products.map((product) => ({...product}))
@@ -33,10 +35,14 @@ export const CartContextProvider = ({ products, children }) => {
         setCarrito(products_)
     }
 
-    function  isInCart(id) {
+    function isInCart(id) {
         let bool = false
-
         return bool
+    }
+
+    const totalAmount = () => {
+        const total = products.map(item => item.precio*item.cantidad).reduce((prev, curr) => prev + curr, 0);
+        return total
     }
 
     return (
@@ -46,7 +52,8 @@ export const CartContextProvider = ({ products, children }) => {
                 addProduct,
                 deleteProduct,
                 clear,
-                isInCart
+                isInCart,
+                totalAmount
             }}
         >
             {children}
