@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { insertProduct, updateProduct, removeProduct, removeAllProducts } from '../firebase/firebase';
+import { insertProduct, updateProduct, removeProduct, removeAllProducts, insertPurchase } from '../firebase/firebase';
 
 const CartContext = createContext({});
 export const CartContextProvider = ({ products, children }) => {
@@ -45,6 +45,15 @@ export const CartContextProvider = ({ products, children }) => {
         return total
     }
 
+    const addPurchase = async (products) => {
+        //agregar una cantidad de un articulo
+        const carrito = {id:1, 
+                        detalle:products}
+        const id = await insertProduct(carrito)
+        const _carrito = products.concat(carrito)
+        setCarrito(_carrito)
+    }
+
     return (
         <CartContext.Provider
             value={{
@@ -53,7 +62,8 @@ export const CartContextProvider = ({ products, children }) => {
                 deleteProduct,
                 clear,
                 isInCart,
-                totalAmount
+                totalAmount,
+                addPurchase
             }}
         >
             {children}

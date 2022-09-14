@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { CartContextProvider } from './context/cartContext'
-import NavBar from './navbar/NavBar';
+import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
-import ItemDetailContainer from './itemdetail/ItemDetailContainer';
-import ItemCartContainer from './cart/ItemCartContainer';
-import Footer from './footer/Footer';
-import PageNotFound from './pagenotfound/PageNotFound';
+import ItemDetailContainer from './components/ItemDetailContainer';
+import ItemCartContainer from './components/ItemCartContainer';
+import Footer from './components/Footer';
+import PageNotFound from './components/PageNotFound';
 import AboutUs from './aboutus/AboutUs'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { getCart } from './firebase/firebase'

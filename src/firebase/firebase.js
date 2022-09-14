@@ -72,6 +72,12 @@ export const updateMultipleProduct = (products) =>{
     }
 }
 
+export const insertPurchase = async (carrito) => {
+    const colRef = collection(db, 'compras')
+    const docRef = await addDoc(colRef, carrito)
+    return docRef.id;
+}
+
 export const onChangesProduct = (id, cb) => {
     onSnapshot(doc(db, 'carrito', id), (snp) => {
       cb({ id: snp.id, ...snp.data() });
