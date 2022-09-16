@@ -6,7 +6,7 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import ItemCartContainer from './components/ItemCartContainer';
 import Footer from './components/Footer';
 import PageNotFound from './components/PageNotFound';
-import AboutUs from './aboutus/AboutUs'
+import AboutUs from './components/AboutUs'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { getCart } from './firebase/firebase'
 import './App.css';

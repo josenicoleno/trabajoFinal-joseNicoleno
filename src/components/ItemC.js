@@ -38,8 +38,8 @@ const Item = ({ item }) => {
                 </button>
 
                 <div className="form-outline">
-                    <input id="form1" min="0" name="quantity" defaultValue={item.cantidad} type="number" className="form-control" />
                     <label className="form-label" htmlFor="form1">Cantidad</label>
+                    <input id="form1" min="0" name="quantity" defaultValue={item.cantidad} type="number" className="form-control" />
                 </div>
 
                 <button className="btn btn-primary px-3 ms-2"
