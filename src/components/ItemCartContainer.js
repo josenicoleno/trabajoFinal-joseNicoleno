@@ -1,7 +1,7 @@
 import React from "react";
 import CartContext from "../context/cartContext";
 import ItemCart from "./ItemCart";
-import './styleCart.css'
+//import './styleCart.css'
 
 const ItemCartContainer = () => {
     return (
