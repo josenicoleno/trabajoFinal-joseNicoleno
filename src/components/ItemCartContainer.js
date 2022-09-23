@@ -1,11 +1,17 @@
 import React from "react";
 import CartContext from "../context/cartContext";
+import { insertPurchase } from "../firebase/firebase";
 import ItemCart from "./ItemCart";
 //import './styleCart.css'
 
+function onAddCallback() { 
+    //insertPurchase(_carrito)
+    //setShowItemCount(false)
+}
+
 const ItemCartContainer = () => {
     return (
-        <CartContext.Consumer>{({ products: carrito, totalAmount }) => (
+        <CartContext.Consumer>{({ products: carrito, totalAmount, addPurchase }) => (
             <section className="h-100 gradient-custom">
                 <div className="container py-5">
                     <div className="row d-flex justify-content-center my-4">
@@ -65,9 +71,13 @@ const ItemCartContainer = () => {
                                             <span><strong>{totalAmount()}</strong></span>
                                         </li>
                                     </ul>
-                                    <button type="button" className="btn btn-primary btn-lg btn-block">
+                                    {carrito.length > 0 
+                                    ? 
+                                    <button type="button" className="btn btn-primary btn-lg btn-block" onClick={onAddCallback}>
                                         Comprar
                                     </button>
+                                    : <>
+                                    </>}
                                 </div>
                             </div>
                         </div>

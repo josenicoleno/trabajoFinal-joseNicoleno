@@ -6,24 +6,16 @@ import CartContext from '../context/cartContext';
 const ItemDetail = ({ item }) => {
     const [product, setProduct] = useState({ "id": item.id, "titulo": item.titulo, "precio": item.precio, "foto": item.foto, "cantidad": 0 })
     const [showItemCount, setShowItemCount] = useState(true)
-    const [showList, setShowList] = useState(false)
     const cartContextValue = useContext(CartContext);
 
     function onAddCallback(n) {
         var product_ = { "id": item.id, "titulo": item.titulo, "precio": item.precio, "foto": item.foto, "cantidad": n }
         setProduct(product_)
         cartContextValue.addProduct(product_, n)
-        // const id = insertProduct({ "id": item.id, "titulo": item.titulo, "precio": item.precio, "foto": item.foto, "cantidad": n })
-        //id && 
         setShowItemCount(false)
-        //alert(`${n} productos agregados correctamente`)
-    }
-    function clickListener(evento) {
-        setShowList(!showList)
     }
 
     return (
-        <CartContext.Consumer>{({ addProduct }) => (
             <div>{!item.id
                 ? (<h3>No hay elementos</h3>)
                 : (<div className="container">
@@ -56,8 +48,5 @@ const ItemDetail = ({ item }) => {
             }
             </div>
         )}
-        </CartContext.Consumer>
-    )
-}
 
 export default ItemDetail;

@@ -46,11 +46,11 @@ export const CartContextProvider = ({ products, children }) => {
     }
 
     const addPurchase = async (products) => {
-        //agregar una cantidad de un articulo
         const carrito = {id:1, 
-                        detalle:products}
-        const id = await insertProduct(carrito)
-        const _carrito = products.concat(carrito)
+                        detalle:{products}
+                    }
+        const id = await insertPurchase(carrito)
+        const _carrito = {}
         setCarrito(_carrito)
     }
 

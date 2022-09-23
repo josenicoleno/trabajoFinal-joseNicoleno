@@ -7,8 +7,6 @@ const ItemCart = ({ items }) => {
             <div className="row">
                 {items?.map((item) => <Item item={item} key={item.id} />)}
             </div>
-            {/*  <!-- Single item --> */}
-
             <hr className="my-4" />
         </>)
 }
