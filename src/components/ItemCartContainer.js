@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import CartContext from "../context/cartContext";
-import { insertPurchase } from "../firebase/firebase";
 import ItemCart from "./ItemCart";
 //import './styleCart.css'
 
-function onAddCallback() { 
-    //insertPurchase(_carrito)
-    //setShowItemCount(false)
-}
+
 
 const ItemCartContainer = () => {
+    const cartContextValue = useContext(CartContext);
+
+    function onAddCallback() {
+        alert('hice clic acá')
+        cartContextValue.addPurchase()
+        //insertPurchase(_carrito)
+        //setShowItemCount(false)
+    }
+
     return (
-        <CartContext.Consumer>{({ products: carrito, totalAmount, addPurchase }) => (
+        <CartContext.Consumer>{({ products: carrito, totalAmount }) => (
             <section className="h-100 gradient-custom">
                 <div className="container py-5">
                     <div className="row d-flex justify-content-center my-4">
@@ -71,13 +76,13 @@ const ItemCartContainer = () => {
                                             <span><strong>{totalAmount()}</strong></span>
                                         </li>
                                     </ul>
-                                    {carrito.length > 0 
-                                    ? 
-                                    <button type="button" className="btn btn-primary btn-lg btn-block" onClick={onAddCallback}>
-                                        Comprar
-                                    </button>
-                                    : <>
-                                    </>}
+                                    {carrito.length > 0
+                                        ?
+                                        <button type="button" className="btn btn-primary btn-lg btn-block" onClick={onAddCallback}>
+                                            Comprar
+                                        </button>
+                                        : <>
+                                        </>}
                                 </div>
                             </div>
                         </div>
