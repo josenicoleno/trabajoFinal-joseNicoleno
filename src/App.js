@@ -6,6 +6,7 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import ItemCartContainer from './components/ItemCartContainer';
 import Footer from './components/Footer';
 import PageNotFound from './components/PageNotFound';
+import ThankYouPage from './components/ThankYouPage';
 import AboutUs from './components/AboutUs'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { getCart } from './firebase/firebase'
@@ -34,10 +35,9 @@ function App() {
           <Route path='/' element={<App />} />
           <Route index element={<ItemListContainer />} />
           <Route path='productos/:id' element={<ItemDetailContainer />} />
-          {/*  <Route path='episodios' element={<Episodies />} />
-          <Route path='episodio/:id' element={<EpisodeDetailContainer />} /> */}
           <Route path='carrito' element={<ItemCartContainer />} />
           <Route path='sobre-nostros' element={<AboutUs />} />
+          <Route path='thank-you-page' element={<ThankYouPage/>}></Route>
           <Route path='*' element={<PageNotFound />} />
         </Routes>
         <Footer />
